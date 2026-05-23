@@ -106,7 +106,50 @@ Respuesta esperada:
 }
 ```
 
-## 9. Casos de prueba sugeridos
+## 9. Reporte de estadísticas
+
+Los médicos pueden consultar un reporte con estadísticas de las predicciones realizadas accediendo a:
+
+```text
+http://localhost:5000/reporte
+```
+
+El reporte incluye:
+
+- **Número total de predicciones por categoría.**
+- **Últimas 5 predicciones realizadas** (con fecha, datos de entrada y resultado).
+- **Fecha de la última predicción.**
+
+También se puede obtener el reporte en formato JSON:
+
+```bash
+curl http://localhost:5000/reporte?format=json
+```
+
+Respuesta esperada:
+
+```json
+{
+  "total_por_categoria": {
+    "NO ENFERMO": 2,
+    "ENFERMEDAD AGUDA": 1
+  },
+  "ultimas_5": [
+    {
+      "temperatura": 38.5,
+      "sintomas": 5,
+      "dias_evolucion": 7,
+      "prediccion": "ENFERMEDAD AGUDA",
+      "fecha": "2026-05-23T10:30:00.123456"
+    }
+  ],
+  "fecha_ultima_prediccion": "2026-05-23T10:30:00.123456"
+}
+```
+
+> **Nota:** Las predicciones se almacenan en un archivo interno del contenedor. Si se reinicia el contenedor, el historial se pierde.
+
+## 10. Casos de prueba sugeridos
 
 | Temperatura | Síntomas | Días de evolución | Resultado esperado |
 | ----------: | -------: | ----------------: | ------------------ |
@@ -115,6 +158,6 @@ Respuesta esperada:
 |        39.0 |        5 |                 4 | ENFERMEDAD AGUDA   |
 |        37.8 |        4 |                20 | ENFERMEDAD CRÓNICA |
 
-## 10. Nota académica
+## 11. Nota académica
 
 Esta solución fue diseñada para demostrar el empaquetamiento y despliegue de un servicio de inferencia mediante Docker. En un escenario real, la función de reglas sería reemplazada por un modelo de Machine Learning entrenado, validado, versionado y monitoreado bajo un pipeline de MLOps.
