@@ -1,11 +1,12 @@
 # Servicio Docker para predicción médica simulada
-# Presentado por Anderson Trujillo y William suaza 
+
+# Presentado por Anderson Trujillo y William suaza
 
 ## 1. Finalidad de la solución
 
 La solución simula un servicio de predicción médica que permite a un médico ingresar tres variables clínicas básicas y recibir una clasificación general del estado del paciente.
 
-La función no corresponde a un modelo real entrenado. Se desarrolló  para simular el comportamiento esperado de un modelo de Machine Learning.
+La función no corresponde a un modelo real entrenado. Se desarrolló para simular el comportamiento esperado de un modelo de Machine Learning.
 
 ## 2. Estados que retorna la solución
 
@@ -14,17 +15,18 @@ La solución puede retornar los siguientes estados:
 - NO ENFERMO
 - ENFERMEDAD LEVE
 - ENFERMEDAD AGUDA
+- ENFERMEDAD TERMINAL
 - ENFERMEDAD CRÓNICA
 
 ## 3. Variables de entrada
 
 El servicio recibe tres valores:
 
-| Variable | Descripción | Ejemplo |
-|---|---|---|
-| temperatura | Temperatura corporal del paciente en grados Celsius | 38.5 |
-| sintomas | Número de síntomas reportados | 5 |
-| dias_evolucion | Días desde el inicio de los síntomas | 7 |
+| Variable       | Descripción                                         | Ejemplo |
+| -------------- | --------------------------------------------------- | ------- |
+| temperatura    | Temperatura corporal del paciente en grados Celsius | 38.5    |
+| sintomas       | Número de síntomas reportados                       | 5       |
+| dias_evolucion | Días desde el inicio de los síntomas                | 7       |
 
 ## 4. Estructura del proyecto
 
@@ -107,11 +109,11 @@ Respuesta esperada:
 ## 9. Casos de prueba sugeridos
 
 | Temperatura | Síntomas | Días de evolución | Resultado esperado |
-|---:|---:|---:|---|
-| 36.8 | 0 | 1 | NO ENFERMO |
-| 37.5 | 2 | 3 | ENFERMEDAD LEVE |
-| 39.0 | 5 | 4 | ENFERMEDAD AGUDA |
-| 37.8 | 4 | 20 | ENFERMEDAD CRÓNICA |
+| ----------: | -------: | ----------------: | ------------------ |
+|        36.8 |        0 |                 1 | NO ENFERMO         |
+|        37.5 |        2 |                 3 | ENFERMEDAD LEVE    |
+|        39.0 |        5 |                 4 | ENFERMEDAD AGUDA   |
+|        37.8 |        4 |                20 | ENFERMEDAD CRÓNICA |
 
 ## 10. Nota académica
 

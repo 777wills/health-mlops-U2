@@ -4,7 +4,7 @@
 
 En el campo de la medicina existe una gran cantidad de información clínica de pacientes. Sin embargo, no todas las enfermedades cuentan con la misma disponibilidad de datos. Para enfermedades comunes suele existir un volumen amplio de registros, mientras que para enfermedades huérfanas la información puede ser limitada, dispersa o difícil de etiquetar.
 
-El objetivo general es proponer un pipeline de Machine Learning Operations, MLOps, para construir, validar, desplegar y monitorear un modelo que, a partir de síntomas y variables clínicas de un paciente, permita estimar si existe posibilidad de enfermedad y clasificar el resultado en estados como: no enfermo, enfermedad leve, enfermedad aguda o enfermedad crónica.
+El objetivo general es proponer un pipeline de Machine Learning Operations, MLOps, para construir, validar, desplegar y monitorear un modelo que, a partir de síntomas y variables clínicas de un paciente, permita estimar si existe posibilidad de enfermedad y clasificar el resultado en estados como: no enfermo, enfermedad leve, enfermedad aguda, enfermedad terminal o enfermedad crónica.
 
 La solución debe entenderse como un apoyo a la decisión médica, no como un reemplazo del criterio clínico del profesional de salud.
 
@@ -36,7 +36,7 @@ En esta fase se define el objetivo clínico, el alcance del modelo, las restricc
 
 **Objetivo del modelo:**
 
-Predecir, a partir de síntomas y variables clínicas, si un paciente podría presentar una enfermedad, diferenciando entre estados como no enfermo, enfermedad leve, enfermedad aguda o enfermedad crónica.
+Predecir, a partir de síntomas y variables clínicas, si un paciente podría presentar una enfermedad, diferenciando entre estados como no enfermo, enfermedad leve, enfermedad aguda, enfermedad terminal o enfermedad crónica.
 
 **Restricciones principales:**
 
