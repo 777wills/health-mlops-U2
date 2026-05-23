@@ -53,10 +53,11 @@ def predecir_estado(temperatura: float, sintomas: int, dias_evolucion: int) -> s
     - sintomas: cantidad de síntomas reportados.
     - dias_evolucion: días desde el inicio de los síntomas.
 
-    Retorna uno de los cuatro estados requeridos:
+    Retorna uno de los cinco estados requeridos:
     - NO ENFERMO
     - ENFERMEDAD LEVE
     - ENFERMEDAD AGUDA
+    - ENFERMEDAD TERMINAL
     - ENFERMEDAD CRÓNICA
     """
 
@@ -68,6 +69,9 @@ def predecir_estado(temperatura: float, sintomas: int, dias_evolucion: int) -> s
 
     if temperatura >= 38.0 and sintomas >= 4 and dias_evolucion <= 14:
         return "ENFERMEDAD AGUDA"
+
+    if temperatura >= 39.5 and sintomas >= 6 and dias_evolucion > 21:
+        return "ENFERMEDAD TERMINAL"
 
     return "ENFERMEDAD CRÓNICA"
 
@@ -91,7 +95,14 @@ def predecir_api():
     data = request.get_json()
 
     if not data:
-        return jsonify({"error": "Debe enviar un JSON con temperatura, sintomas y dias_evolucion"}), 400
+        return (
+            jsonify(
+                {
+                    "error": "Debe enviar un JSON con temperatura, sintomas y dias_evolucion"
+                }
+            ),
+            400,
+        )
 
     campos_requeridos = ["temperatura", "sintomas", "dias_evolucion"]
     for campo in campos_requeridos:
@@ -107,15 +118,17 @@ def predecir_api():
 
     resultado = predecir_estado(temperatura, sintomas, dias_evolucion)
 
-    return jsonify({
-        "entrada": {
-            "temperatura": temperatura,
-            "sintomas": sintomas,
-            "dias_evolucion": dias_evolucion
-        },
-        "prediccion": resultado,
-        "nota": "Predicción simulada con fines académicos. No corresponde a un diagnóstico médico real."
-    })
+    return jsonify(
+        {
+            "entrada": {
+                "temperatura": temperatura,
+                "sintomas": sintomas,
+                "dias_evolucion": dias_evolucion,
+            },
+            "prediccion": resultado,
+            "nota": "Predicción simulada con fines académicos. No corresponde a un diagnóstico médico real.",
+        }
+    )
 
 
 if __name__ == "__main__":
